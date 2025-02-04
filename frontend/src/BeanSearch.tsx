@@ -1,11 +1,11 @@
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
-import { Bean } from './bean';
+import { Bean } from './Bean';
 import BeanListComponent from './BeanList';
 import { useEffect, useState } from 'react';
 
 export default function BeanSearchComponent(props: {beans: Bean[]}) {
-  const [beanSearchFieldValue, setSearchField] = useState('');
+  const [beanSearchFieldValue, setSearchField] = useState<string>('');
   const [filteredBeans, setFilteredBeans] = useState<Bean[]>(props.beans);
 
   useEffect(() =>{

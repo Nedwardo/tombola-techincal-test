@@ -1,24 +1,22 @@
-import { Box, Card, CardContent, CardMedia, Typography } from "@mui/material";
-import { Bean } from "./bean";
-import { useState } from "react";
+import { Card, CardContent, CardMedia, Typography } from "@mui/material";
+import { Bean } from "./Bean";
+import StarIcon from '@mui/icons-material/Star';
 
-export default function BeanComponent(props: {bean: Bean}) {
-    const [showDescription, setShowDescription] = useState(false);
+export default function BeanCardComponent(props: {bean: Bean, showDetailed: boolean}) {
     return (
-    <Box component="li" sx={{ listStyle: 'none', mb: 2 }} key={props.bean._id}>
-        <Card sx={{ maxWidth: 345 }} onMouseOver={() => setShowDescription(true)} onMouseOut={() => setShowDescription(false)}>
+        <Card sx={{ maxWidth: "fit-content",  minWidth: 250}}>
             <CardMedia
                 component="img"
                 height="200"
                 image={props.bean.Image}
                 alt={props.bean.Name}
-                sx={{ objectFit: 'contain' }}
+                sx={{ objectFit: 'contain',  margin:"5px"}}
                 loading="lazy"
             />
             <CardContent>
-                <Typography gutterBottom variant="h5" component="h2">
+                {!props.showDetailed && <Typography gutterBottom variant="h5" component="h2">
                     {props.bean.Name}
-                </Typography>
+                </Typography> }
                 <Typography variant="body2" color="text.secondary">
                     Bean Colour: {props.bean.colour}
                 </Typography>
@@ -28,13 +26,13 @@ export default function BeanComponent(props: {bean: Bean}) {
                 <Typography variant="body1" color="text.secondary">
                     Price: {props.bean.Cost}
                 </Typography>
-                { showDescription && <Typography variant="body1" color="text.secondary" sx={{ "&:hover": {"hidden": true} }}>
+                {props.showDetailed && <Typography variant="body1" color="text.secondary">
                     Description: {props.bean.Description}
-                </Typography> }
-
+                </Typography>}
+                {props.bean.isBOTD && <><Typography variant="body1" color="text.primary">
+                    <StarIcon/>Bean of the Day<StarIcon/>
+                </Typography></>}
             </CardContent>
         </Card>
-    </Box>
-
     )
 }

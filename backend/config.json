@@ -1,0 +1,7 @@
+{
+    "reset_sql": true,
+    "sql_file_path" : "AllTheBeans.db",
+    "table_name": "beans",
+    "preset_table_data": "presets/AllTheBeans.json",
+    "set_random_botd": true
+}

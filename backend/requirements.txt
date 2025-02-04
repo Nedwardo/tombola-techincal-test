@@ -1,0 +1,6 @@
+fastapi==0.115.7
+fastapi-cli==0.0.7
+pandas==2.2.3
+sqlalchemy==2.0.37
+pendulum==3.0.0
+fastapi-utilities-0.3.0
